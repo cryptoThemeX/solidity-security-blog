@@ -119,6 +119,8 @@ One of the features of Ethereum smart contracts is the ability to call and utili
 
 For further reading on re-entrancy attacks, see [Reentrancy Attack On Smart Contracts](https://medium.com/@gus_tavo_guim/reentrancy-attack-on-smart-contracts-how-to-identify-the-exploitable-and-an-example-of-an-attack-4470a2d8dfe4) and [Consensus - Ethereum Smart Contract Best Practices](https://consensys.github.io/smart-contract-best-practices/known_attacks/#reentrancy).
 
+for practice, see the updated example at https://solidity-by-example.org/hacks/re-entrancy/ 
+
 <h3 id="re-vuln">The Vulnerability</h3>
 
 This attack can occur when a contract sends ether to an unknown address. An attacker can carefully construct a contract at an external address which contains malicious code in the [fallback function](https://solidity.readthedocs.io/en/latest/contracts.html?highlight=fallback#fallback-function). Thus, when a contract sends ether to this address, it will invoke the malicious code. Typically the malicious code executes a function on the vulnerable contract, performing operations not expected by the developer. The name "re-entrancy" comes from the fact that the external malicious contract calls back a function on the vulnerable contract and "*re-enters*" code execution at an arbitrary location on the vulnerable contract.
